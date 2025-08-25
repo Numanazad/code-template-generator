@@ -2,11 +2,14 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import { TemplateRequestDto } from './dto/template_request.dto';
 import { CppGenerator } from './generators/cpp_generator';
 import { GenerateInput, LanguageGenerator, ParameterModel, ReturnsModel, TypeAst, DslParser } from './generators/base_generator';
-
+import { JsGenerator } from './generators/js_generator';
+import { PythonGenerator } from './generators/py_generator';
 @Injectable()
 export class TemplateService {
 private generators: Record<string, LanguageGenerator> = {
     cpp: new CppGenerator(),
+    js: new JsGenerator(),
+    python: new PythonGenerator(),
 };
 
 
